@@ -5,7 +5,7 @@
 
 Hầu hết các chương trình MySQL đều có thể đọc các tùy chọn khởi động từ các file tùy chọn (thường được gọi là các file cấu hình). Các file tuỳ chọn cung cấp 1 cách thuận tiện nhất để sử dụng các tùy chọn thường được chỉ định để chúng không cần phải nhập vào mỗi dòng lệnh khi bạn chạy một chương trình nào đó.
 
-Để xác định xem một chương trình có đọc các tệp tùy chọn hay không, hãy gọi nó bằng tùy chọn `--help`. (Đối với mysqld, sử dụng `--verbose` và `--help`.) Nếu chương trình đọc các tập tin tùy chọn, thông báo trợ giúp cho biết các tập tin sẽ tìm và các nhóm tùy chọn nào sẽ nhận ra.
+Để xác định xem một chương trình có đọc các tệp tùy chọn hay không, hãy gọi nó bằng tùy chọn `--help`. (Đối với mysqld, sử dụng `--verbose` và `--help`.) Nếu chương trình đọc các tập tin tùy chọn, thông báo trợ giúp cho biết các tập tin sẽ tìm và các nhóm tùy chọn nào sẽ được xác nhận.
 
 Lưu ý
 
@@ -15,7 +15,7 @@ Nhiều tệp tùy chọn là các tệp văn bản thuần túy, được tạo
 
 Để chỉ định tên tệp đường dẫn đăng nhập thay thế khác, hãy thiết lập biến môi trường `MYSQL_TEST_LOGIN_FILE`. Biến này được sử dụng bởi cung cụ kiểm tra **mysql-test-run.pl**, nhưng cũng được công nhận bởi [**mysql_config_editor**][4] và bởi các MySQL client như [**mysql**][6], [**mysqladmin**][7], và vv.
 
-MySQL tìm kiếm các tệp tùy chọn theo thứ tự được mô tả trong phần thảo luận ở sau và đọc bất kỳ tệp nào tồn tại. Nếu một tệp tùy chọn mà bạn muốn sử dụng không tồn tại, hãy tạo nó bằng cách sử dụng phương thức thích hợp, như được thảo luận.
+MySQL tìm kiếm các tệp tùy chọn theo thứ tự được mô tả trong phần thảo luận sau và đọc bất kỳ tệp nào tồn tại. Nếu một tệp tùy chọn mà bạn muốn sử dụng không tồn tại, hãy tạo nó bằng cách sử dụng phương thức thích hợp, như vừa thảo luận.
 
 Trên Windows, các chương trình MySQL đọc các tùy chọn khởi động từ các tệp được hiển thị trong bảng sau, theo thứ tự được chỉ định (các tệp được liệt kê đầu tiên được đọc trước tiên, rồi đến các file sau theo thứ tự ưu tiên).
 
@@ -49,7 +49,7 @@ Trên các hệ thống Unix và dựa trên Unix, các chương trình MySQL đ
 Lưu ý: 
 Trên các nền tảng Unix, MySQL bỏ qua các tệp cấu hình có thể ghi toàn cục. Đây là mục đích an ninh.
 
-**Table 4.2 Option Files Read on Unix and Unix-Like Systems**
+**Table 4.2 Các tệp tùy chọn được đọc trên các hệ thống giống Unix và Unix**
 
 | File Name               | Purpose                                                       |  
 | ----------------------- | ------------------------------------------------------------- |  
@@ -161,7 +161,7 @@ Có thể sử dụng chỉ thị`!include` trong các file tùy chọn để in
     
     !include /home/mydir/myopt.cnf
 
-To tìm kiểm `/home/mydir` thư mục and đọc các file tùy chọn được tìm thấy ở đây, sử dụng chỉ thị sau: 
+Để tìm kiểm `/home/mydir` thư mục và đọc các file tùy chọn được tìm thấy ở đây, sử dụng chỉ thị sau: 
     
     
     !includedir /home/mydir
@@ -175,8 +175,6 @@ Bất cứ file nào được tìm thấy và include vào bằng cách sử d�
 Viết nội dung của một file tùy chọn được include như các file tùy chọn khác. Nó nên chứa các nhóm tùy chọn, mỗi nhóm được đứng trước bởi 1 dòng `[_`group`_]` chỉ rõ chương trình mà các tùy chọn này áp dụng.
 
 Trong khi 1 file được thêm đang được xử lý, chỉ những tùy chọn trong các nhóm mà chương trình hiện tại đang tìm kiếm để sử dụng. Thì các nhóm khác sẽ bị loại bỏ. Giả sử rằng file `my.cnf` chứa dòng:
-
-While an included file is being processed, only those options in groups that the current program is looking for are used. Other groups are ignored. Suppose that a `my.cnf` file contains this line: 
     
     
     !include /home/mydir/myopt.cnf
