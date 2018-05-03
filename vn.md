@@ -15,11 +15,11 @@ Nhiều tệp tùy chọn là các tệp văn bản thuần túy, được tạo
 
 Để chỉ định tên tệp đường dẫn đăng nhập thay thế khác, hãy thiết lập biến môi trường `MYSQL_TEST_LOGIN_FILE`. Biến này được sử dụng bởi cung cụ kiểm tra **mysql-test-run.pl**, nhưng cũng được công nhận bởi [**mysql_config_editor**][4] và bởi các MySQL client như [**mysql**][6], [**mysqladmin**][7], và vv.
 
-MySQL tìm kiếm các tệp tùy chọn theo thứ tự được mô tả trong phần thảo luận ở sau và đọc bất kỳ tệp nào tồn tại. Nếu một tệp tùy chọn mà bạn muốn sử dụng không tồn tại, hãy tạo nó bằng cách sử dụng phương thức thích hợp, như được thảo luận.
+MySQL tìm kiếm các tệp tùy chọn theo thứ tự được mô tả trong phần thảo luận sau và đọc bất kỳ tệp nào tồn tại. Nếu một tệp tùy chọn mà bạn muốn sử dụng không tồn tại, hãy tạo nó bằng cách sử dụng phương thức thích hợp, như được vừa thảo luận.
 
 Trên Windows, các chương trình MySQL đọc các tùy chọn khởi động từ các tệp được hiển thị trong bảng sau, theo thứ tự được chỉ định (các tệp được liệt kê đầu tiên được đọc trước tiên, rồi đến các file sau theo thứ tự ưu tiên).
 
-**Table 4.1 Option Files Read on Windows Systems**
+**Bảng 4.1 Các file tùy chọn đọc trên các hệ điều hành Unix và giống Unix**
 
 | File Name                                                                                  | Purpose                                                       |  
 | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------- |  
@@ -161,7 +161,7 @@ Có thể sử dụng chỉ thị`!include` trong các file tùy chọn để in
     
     !include /home/mydir/myopt.cnf
 
-To tìm kiểm `/home/mydir` thư mục and đọc các file tùy chọn được tìm thấy ở đây, sử dụng chỉ thị sau: 
+Để tìm kiểm `/home/mydir` thư mục và đọc các file tùy chọn được tìm thấy ở đây, sử dụng chỉ thị sau: 
     
     
     !includedir /home/mydir
@@ -176,7 +176,6 @@ Viết nội dung của một file tùy chọn được include như các file t
 
 Trong khi 1 file được thêm đang được xử lý, chỉ những tùy chọn trong các nhóm mà chương trình hiện tại đang tìm kiếm để sử dụng. Thì các nhóm khác sẽ bị loại bỏ. Giả sử rằng file `my.cnf` chứa dòng:
 
-While an included file is being processed, only those options in groups that the current program is looking for are used. Other groups are ignored. Suppose that a `my.cnf` file contains this line: 
     
     
     !include /home/mydir/myopt.cnf
